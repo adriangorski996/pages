@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="pl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow"><title>Notatki prelegenta · AI</title>
+<style>
+:root{--ink:#142437;--paper:#f5f2eb;--green:#3d806d;--orange:#e9aa61;--muted:#5d6d77}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+a{color:var(--green)}header{padding:32px max(24px,calc((100vw - 920px)/2));background:var(--ink);color:var(--paper)}
+header .label{color:var(--orange);font-size:14px;letter-spacing:.14em;font-weight:700}h1{font-size:clamp(30px,5vw,52px);line-height:1.08;margin:12px 0 8px}header p{color:#b9cbd2;margin:0}
+main{max-width:920px;margin:auto;padding:0 24px 80px}#spis{padding:34px 0 20px}#spis h2{font-size:18px;margin:0 0 16px}
+.toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.toc a{display:flex;gap:12px;align-items:baseline;padding:10px 12px;background:white;text-decoration:none;color:var(--ink);border:1px solid #d4d9d5;border-radius:5px}.toc a span{font-weight:700;color:var(--green)}
+.note{padding:54px 0 16px;border-top:2px solid var(--ink);scroll-margin-top:12px}.note-number{font-size:15px;letter-spacing:.12em;color:var(--green);font-weight:700}.note h2{font-size:clamp(29px,4vw,42px);line-height:1.12;margin:8px 0 28px}.script{white-space:pre-wrap;font-size:clamp(18px,2.5vw,22px);line-height:1.58}
+details{border-top:1px solid #c8cbc9;margin-top:34px;padding-top:14px}summary{cursor:pointer;font-weight:700}.sources{white-space:pre-wrap;overflow-wrap:anywhere;color:var(--muted);font-size:16px;margin-top:14px}
+.note-nav{display:flex;justify-content:space-between;gap:16px;margin-top:36px;padding-top:14px;border-top:1px solid #c8cbc9;font-size:15px;font-weight:700}.note-nav a{text-decoration:none}
+@media(max-width:650px){.toc{grid-template-columns:1fr}header{padding:28px 24px}.note{padding-top:40px}.note-nav{font-size:14px;gap:8px}}
+@media print{header{background:white;color:var(--ink)}header p{color:var(--ink)}.toc{display:none}.note{break-before:page}.note-nav{display:none}details{display:block}}
+</style></head><body>
+<header><div class="label">PRELEKCJA O AI</div><h1>Notatki prelegenta</h1><p>Osobny plik do czytania podczas wystąpienia. Slajdy zmieniasz ręcznie.</p></header>
+<main><section id="spis"><h2>Przejdź do slajdu</h2><nav class="toc" aria-label="Spis slajdów"><a href="#slajd-01"><span>01</span>Okienko czatu</a>
+<a href="#slajd-02"><span>02</span>Zaplecze AI</a>
+<a href="#slajd-03"><span>03</span>Jak powstaje i działa model</a>
+<a href="#slajd-04"><span>04</span>Ekosystem Nvidii</a>
+<a href="#slajd-05"><span>05</span>Kontrola dostępu do chipów</a>
+<a href="#slajd-06"><span>06</span>Dostęp do modelu</a>
+<a href="#slajd-07"><span>07</span>Rozwój alternatywy dla Nvidii</a>
+<a href="#slajd-08"><span>08</span>Model w systemie</a>
+<a href="#slajd-09"><span>09</span>AI w badaniu firmy</a>
+<a href="#slajd-10"><span>10</span>Polskie produkty</a>
+<a href="#slajd-11"><span>11</span>Modele pod własną kontrolą</a>
+<a href="#slajd-12"><span>12</span>Infrastruktura i usługi</a>
+<a href="#slajd-13"><span>13</span>Wdrożenie i efekt</a>
+<a href="#slajd-14"><span>14</span>System dla analityka</a>
+<a href="#slajd-15"><span>15</span>Zakres kontroli</a>
+<a href="#slajd-16"><span>16</span>Możliwość dalszego działania</a></nav></section>
+<section class="note" id="slajd-01">
+<div class="note-number">SLAJD 01 / 16</div>
+<h2>Okienko czatu</h2>
+<div class="script">Pod koniec 2022 roku w internecie pojawiła się niepozorna strona z okienkiem czatu.
+
+Stało za tym OpenAI - do tej pory znane głównie ludziom związanym z technologią, inwestorom i naukowcom. Dzisiaj znają je wszyscy.
+
+Bawiłem się modelem GPT-3 jeszcze przed uruchomieniem tego czatu i nie zrobił na mnie wrażenia. Wtedy nie pokazywano go jako modelu czatowego.
+
+To był po prostu autocomplete, czyli podpowiadanie dalszego tekstu.
+
+Modele językowe rozwijano już w poprzedniej dekadzie. Ale dopiero wypuszczenie chata GPT rozpoczęło w technologii rewolucję, którą obserwujemy do dzisiaj.
+
+Wokół tego okienka dość szybko pojawiły się śmiałe obietnice. Przełom w nauce raz w tygodniu. W najbardziej radykalnych zapowiedziach programiści, prawnicy i lekarze mieli wkrótce stać się niepotrzebni.
+
+To było prawie cztery lata temu. Chociaż widzimy postępy - modele językowe, w skrócie LLM-y, dobrze sobie radzą w programowaniu i wielu zadaniach, gdzie łatwo sprawdzić wynik - to białe kołnierzyki nie zniknęły z biur. AI zmienia sposób wykonywania zadań i usprawnia pracę, ale nie zlikwidowało tych zawodów.
+
+A jednak wydarzyło się coś poważnego, tylko niezupełnie to, co nam obiecywali marketingowcy, specjaliści od AI i prezesi najważniejszych spółek.
+
+Sztuczna inteligencja, ze szczególnym uwzględnieniem LLM-ów, urosła do jednego z kluczowych zasobów państw i największych firm technologicznych. Poszybowały wyceny firm stojących za potrzebnymi układami - Nvidii, która je projektuje, oraz TSMC, które je produkuje.
+
+Europa też ma ważne miejsce w tym łańcuchu: holenderskie ASML produkuje maszyny potrzebne do wytwarzania tych chipów. Ale samo tworzenie kolejnych regulacji nie wystarczy, żeby utrzymać znaczenie w tej technologii.
+
+Z jednej strony mamy więc narzędzie, któremu każesz napisać maila albo zadajesz pytanie o przepis na naleśniki. Z drugiej energetykę, geopolitykę i wyścig mocarstw. Jak jedno łączy się z drugim?
+
+Dopóki używamy modelu do poprawiania maili, trudno zobaczyć w nim kwestię suwerenności państwa. Ale kiedy zaczynamy powierzać takim systemom pracę w firmach i urzędach, znaczenia nabiera to, kto kontroluje technologię, od której ta praca zależy. Kto ustala warunki dostępu? Kto może podnieść cenę albo odciąć usługę? I czy potrafimy wtedy skorzystać z czegoś innego?
+
+Za okienkiem czatu stoi bowiem cały łańcuch zależności. Nie wystarczy więc mieć dobry pomysł na zastosowanie AI. Trzeba jeszcze mieć dostęp do tego zaplecza i ludzi, którzy potrafią z niego korzystać. Właśnie dlatego rozmowa o wygodnym narzędziu staje się rozmową o przemyśle i możliwościach państwa.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">historia autora i komunikat o uruchomieniu ChatGPT: https://openai.com/index/chatgpt/.</div></details>
+<div class="note-nav"><span></span><a href="#spis">Spis slajdów ↑</a><a href="#slajd-02">Następny →</a></div>
+</section><section class="note" id="slajd-02">
+<div class="note-number">SLAJD 02 / 16</div>
+<h2>Zaplecze AI</h2>
+<div class="script">Stos technologiczny wygląda tak:
+
+Energia, chipy i centra danych. Na tej infrastrukturze, przy użyciu danych i oprogramowania, trenujemy model i kształtujemy jego zachowanie. Potem uruchamiamy go i budujemy wokół niego system, który przeistacza model w konkretną usługę - na przykład chatbota. Taki system może wspomagać ludzi, firmy i instytucje. I z miesiąca na miesiąc potrafi wykonywać coraz więcej zadań.
+
+Z jednej strony mamy coraz mocniejsze modele, z drugiej duża część zapowiedzi się nie spełniła. Jedni zapowiadają, że AI rozwiąże wszystkie problemy ludzkości. Inni ostrzegają, że może ją zniszczyć.
+
+Prawda jest mniej spektakularna i bardziej materialna: AI nie jest samodzielnym źródłem przewagi. Może być mnożnikiem tego, co państwa i organizacje już potrafią robić.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">schemat porządkujący argumentację autora, zgodny z kontekstem projektu. Nie jest wykresem ilościowym.</div></details>
+<div class="note-nav"><a href="#slajd-01">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-03">Następny →</a></div>
+</section><section class="note" id="slajd-03">
+<div class="note-number">SLAJD 03 / 16</div>
+<h2>Jak powstaje i działa model</h2>
+<div class="script">Zarysowaliśmy sobie, o czym mówimy. Ale jak takiego LLM-a się buduje?
+
+Załóżmy, że mamy wystarczającą moc obliczeniową i odpowiednią ilość danych. Proces uczenia możemy podzielić na dwa główne etapy.
+
+pretraining, czyli trening wstępny - jeżeli zaczynamy od zera, losujemy wagi, czyli liczby określające działanie modelu. Na olbrzymim zbiorze danych uczymy go przewidywać następny token, czyli kawałek tekstu. Otrzymujemy tak zwany model bazowy: potrafi generować tekst na wiele tematów. Nie jest jeszcze nauczony wykonywania naszych poleceń, ale ma ogólną wiedzę wyciągniętą z danych, na których był trenowany.
+
+Post-training, czyli dalsze kształtowanie zachowania - uczymy model wykonywać polecenia na przykładach poprawnych odpowiedzi, korzystając z ocen ludzi albo nagradzając poprawne rozwiązania. W ten sposób możemy przygotować model do działania jako chatbot.
+
+Post-training w dużej mierze odpowiadał za różnicę między GPT-3, które nie robiło wrażenia w połowie 2022 roku, a modelem z rodziny GPT-3.5, który zasilał pierwszego Chata GPT. Podstawowy mechanizm pozostał ten sam, ale rozwijające się metody treningu i sposoby uruchamiania modeli poszerzają możliwości.
+
+Po treningu zapisujemy wyuczone wagi modelu w plikach. Jeżeli mamy do nich dostęp, możemy uruchomić model na odpowiednio mocnym sprzęcie. Wykonywanie obliczeń z użyciem gotowego modelu nazywamy wnioskowaniem - po angielsku inference.
+
+Trening największych modeli jest bardzo kosztowny. Ale na nim wydatki się nie kończą. Każde zapytanie wymaga kolejnych obliczeń, które zużywają energię i zajmują sprzęt.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">GPT-3: https://arxiv.org/abs/2005.14165, InstructGPT: https://arxiv.org/abs/2203.02155 i techniczna część briefu projektu.</div></details>
+<div class="note-nav"><a href="#slajd-02">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-04">Następny →</a></div>
+</section><section class="note" id="slajd-04">
+<div class="note-number">SLAJD 04 / 16</div>
+<h2>Ekosystem Nvidii</h2>
+<div class="script">W warstwie sprzętowej najważniejszą firmą jest Nvidia. Jej układy GPU, pierwotnie procesory graficzne, potrafią równolegle wykonywać ogromną liczbę obliczeń. To jest najważniejsza przewaga GPU nad tradycyjnymi procesorami CPU, z jakimi kojarzymy Intela.
+
+Nvidia nie jest jedynym producentem GPU. Oprócz dobrych chipów ma jednak cały ekosystem oprogramowania, którego centrum stanowi CUDA. To platforma pozwalająca programistom i badaczom używać GPU między innymi do trenowania i uruchamiania modeli.
+
+Klient Nvidii nie kupuje więc samego chipa. Kupuje sprawdzony system, do którego istnieją gotowe narzędzia i którego obsługę zna wielu programistów i inżynierów. Kiedy pojawiła się potrzeba trenowania wielkich modeli, Nvidia miała już gotowe zabawki dla badaczy, bo zaczęła rozwijać swoje narzędzia prawie 20 lat temu, długo przed obecną falą popularności AI.
+
+Inne firmy też próbują budować swoje rozwiązania. AMD i Huawei budują alternatywne stosy narzędzi. OpenAI, Amazon i Google rozwijają swoje chipy. Najwięksi odbiorcy próbują zmniejszać zależność od jednego producenta.
+
+Na razie ekosystem Nvidii nadal jest pierwszym wyborem dla zespołów rozwijających nowe metody. Ale tam, gdzie miliardy razy wykonuje się podobne obliczenia, własny, wyspecjalizowany układ może być bardziej opłacalny. To daje konkurentom miejsce na rynku.
+
+Ta rywalizacja nie polega tylko na tym, że ktoś zbuduje chip szybszy od układów Nvidii. Największe firmy próbują stopniowo przenosić część obliczeń na własny sprzęt - przede wszystkim masowe uruchamianie modeli. W ten sposób mogą zmniejszać koszty i zależność od Nvidii.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">CUDA: https://developer.nvidia.com/cuda i biblioteki CUDA-X: https://developer.nvidia.com/cuda/cuda-x-libraries. Dokumentacja pokazuje elementy platformy, nie dowodzi bezwzględnej przewagi każdego układu.</div></details>
+<div class="note-nav"><a href="#slajd-03">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-05">Następny →</a></div>
+</section><section class="note" id="slajd-05">
+<div class="note-number">SLAJD 05 / 16</div>
+<h2>Kontrola dostępu do chipów</h2>
+<div class="script">Nvidia jest amerykańską firmą i podlega amerykańskim przepisom. Jej pozycja dała Waszyngtonowi narzędzie nacisku na Chiny. Stany Zjednoczone w obawie przed rozwojem chińskiego AI objęły kontrolą zaawansowane chipy i część technologii potrzebnych do ich produkcji.
+
+Dzięki przepisom dotyczącym produktów wykonanych przy użyciu amerykańskiej technologii reguły mogą dotyczyć także chipu wyprodukowanego poza USA.
+
+To utrudniło rozbudowę chińskiej infrastruktury do trenowania i uruchamiania największych modeli. Jednocześnie jeszcze bardziej zachęciło do rozwijania własnego sprzętu i oprogramowania.
+
+Najciekawszy zwrot nastąpił w styczniu 2026 roku. Stany Zjednoczone uchyliły drzwi i umożliwiły warunkowe wydawanie zezwoleń na sprzedaż układów H200 do Chin. Wtedy ograniczenie pojawiło się po drugiej stronie: według doniesień Reutersa chińskie służby celne wstrzymały ich import, choć później Pekin dopuszczał wybrane zakupy.
+
+Można przypuszczać, że Pekin próbuje godzić dwa cele. Z jednej strony zapewnić laboratoriom dostęp do zagranicznych chipów, żeby mogły gonić najlepsze amerykańskie modele. Z drugiej rozwijać własną alternatywę, nawet jeśli na razie utrudnia to pracę nad kolejnymi modelami. Konkurentem Nvidii jest Huawei. Niektóre chińskie laboratoria zaczynają zastępować importowaną technologię krajową.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">BIS, zmiana polityki licencyjnej dotyczącej H200: https://www.bis.gov/press-release/department-commerce-revises-license-review-policy-semiconductors-exported-china, Reuters o późniejszych zgodach: https://www.investing.com/news/economy-news/exclusivechina-gives-green-light-to-importing-first-batch-of-nvidias-h200-ai-chips-sources-say-4469141.</div></details>
+<div class="note-nav"><a href="#slajd-04">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-06">Następny →</a></div>
+</section><section class="note" id="slajd-06">
+<div class="note-number">SLAJD 06 / 16</div>
+<h2>Dostęp do modelu</h2>
+<div class="script">Chińskie modele zyskują sympatię wielu użytkowników na Zachodzie między innymi dlatego, że ich twórcy publikują wagi, czyli pliki, które uzyskujemy po treningu. Możemy je pobrać i uruchomić model samodzielnie.
+
+Z flagowymi modelami OpenAI czy Anthropica takiej możliwości nie mamy. Dostęp kupujemy jako usługę: przez czat albo API, czyli interfejs pozwalający naszej aplikacji korzystać z cudzego modelu. W praktyce muszę więc przekazać dostawcy dane. Przy przepisie na naleśniki to niewielki problem. Przy dokumentach poufnych już większy.
+
+Dostawcy oferują zabezpieczenia i zobowiązują się, że danych klientów biznesowych nie będą domyślnie wykorzystywać do treningu. To ważne, ale nie daje mi pełnej kontroli. Nadal muszę wiedzieć, gdzie dane są przetwarzane, jak długo mogą być przechowywane i jakie prawo obowiązuje operatora.
+
+Dostawca ustala również, do czego wolno używać modelu. Firma zajmująca się cyberbezpieczeństwem może legalnie analizować złośliwe oprogramowanie, ale podobne zapytanie może wyglądać jak przygotowanie ataku. Filtry mogą więc zablokować także uprawnioną pracę. Dostawca może też wycofać model albo zastąpić go nową wersją.
+
+Do tego dochodzą decyzje państwa. W czerwcu 2026 roku amerykańskie władze objęły kontrolą eksportową model Fable firmy Anthropic. Dostęp należało odciąć cudzoziemcom, także przebywającym w USA. Anthropic nie potrafiło wiarygodnie sprawdzać obywatelstwa, więc zawiesiło dostęp wszystkim użytkownikom. Fable wrócił globalnie na początku lipca.
+
+To pokazuje, że dostęp do modelu nie zależy wyłącznie od tego, czy płacimy abonament i mamy podpisaną umowę. Państwo, pod którego jurysdykcją działa dostawca, może nakazać mu odcięcie zagranicznych użytkowników.
+
+Dostępne wagi zmieniają tę relację. Mogę wybrać sprzęt, operatora, miejsce przetwarzania i wersję modelu. Nie każdy model zmieści się na laptopie i nie każdy dorówna najlepszym usługom. Nadal obowiązuje mnie też licencja: jedne pozwalają na szerokie wykorzystanie komercyjne, inne nakładają dodatkowe ograniczenia. Ale model mogę uruchomić poza infrastrukturą producenta.
+
+Takie modele powstają również na Zachodzie. OpenAI udostępniło rodzinę gpt-oss, Google rozwija Gemmę. Własne modele z otwartymi wagami publikują też Meta, Nvidia i francuski Mistral. Chińskie modele należą jednak do czołówki tego segmentu i są porównywalne z zamkniętymi modelami zachodnimi. Dla zachodniej firmy, która chce uruchomić dobry model u siebie, są więc realną opcją.
+
+W ten sposób chińskie modele trafiają do zachodnich firm i do oferty usługodawców w USA i Europie. Wokół nich powstają narzędzia, integracje i społeczności użytkowników. Dostępne wagi pozwalają też model dotrenować i dostosować do pracy na innym sprzęcie.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">Anthropic, przywrócenie Fable: https://www.anthropic.com/news/redeploying-fable-5, OpenAI, gpt-oss: https://openai.com/index/introducing-gpt-oss/, OSI, definicja open source AI: https://opensource.org/ai/open-source-ai-definition. Dostępne wagi nie oznaczają automatycznie open source.</div></details>
+<div class="note-nav"><a href="#slajd-05">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-07">Następny →</a></div>
+</section><section class="note" id="slajd-07">
+<div class="note-number">SLAJD 07 / 16</div>
+<h2>Rozwój alternatywy dla Nvidii</h2>
+<div class="script">I tutaj wracamy do Huawei, które rozwija własne chipy Ascend i oprogramowanie do ich obsługi. Chińskie laboratoria działają równolegle na dwóch frontach. Udostępniając dobre modele, oswajają zachodnich użytkowników i firmy z chińską technologią. Jednocześnie pracują nad optymalizacją tych modeli pod układy Ascend, żeby można było je sprawnie uruchamiać również na krajowym sprzęcie. W ten sposób zdobywają użytkowników za granicą, a u siebie rozwijają alternatywę dla infrastruktury Nvidii.
+
+Im więcej dobrych modeli i narzędzi działa na takim sprzęcie, tym łatwiej przekonać kogoś, żeby z niego skorzystał. Rosnąca liczba użytkowników tego sprzętu zachęca z kolei do rozwijania narzędzi i dalszej optymalizacji modeli. Tak może rosnąć konkurencyjny ekosystem.
+
+Jego powodzenie będzie zależało od ceny, wydajności i niezawodności. Nie trzeba jednak od razu wyprzeć Nvidii, żeby zbudować użyteczną alternatywę. Chińczycy rozwijają własne modele, sprzęt i oprogramowanie, które razem mogą ograniczać zależność od amerykańskich dostawców.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">Huawei, rozwój CANN: https://www.huawei.com/en/news/2025/9/hc-xu-keynote-speech, dokumentacja uruchamiania DeepSeek na Ascend: https://docs.vllm.ai/projects/ascend/en/main/tutorials/models/DeepSeek-V4-Flash.html. Źródła potwierdzają narzędzia i techniczną możliwość. Cała pętla jest interpretacją mechanizmu.</div></details>
+<div class="note-nav"><a href="#slajd-06">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-08">Następny →</a></div>
+</section><section class="note" id="slajd-08">
+<div class="note-number">SLAJD 08 / 16</div>
+<h2>Model w systemie</h2>
+<div class="script">Załóżmy więc, że zdobyliśmy odpowiedni sprzęt i wybraliśmy model, który możemy uruchomić u siebie. Czy mamy już własną zdolność AI? Jeszcze nie. Mamy silnik, ale nie mamy maszyny, która wykonuje konkretną pracę.
+
+Zaczęło się od okienka czatu. Wpisywaliśmy pytanie i dostawaliśmy odpowiedź. Taki chatbot może przyspieszyć pracę jednego człowieka, ale sam nie automatyzuje całego procesu. Bez odpowiedniego podłączenia nie ma dostępu do danych, polityk i procedur przedsiębiorstwa. Kiedy nie ma potrzebnych informacji, może odpowiedzieć na podstawie wiedzy ogólnej albo po prostu przekonująco zmyślić.
+
+Żeby LLM mógł obsługiwać taki proces, musimy go obudować warstwą oprogramowania. W branży nazywa się ją czasem harnessem, czyli uprzężą sterującą modelem, chociaż ja wolę to tłumaczyć jako chomąto.
+
+Harness wybiera informacje przekazywane modelowi i łączy go z dokumentami oraz narzędziami. Przechowuje stan zadania, pilnuje uprawnień i obsługuje błędy. Sprawdza wyniki według ustalonych reguł. Może też zatrzymać działanie i poprosić człowieka o zgodę. Jeżeli ktoś używał Claude Code’a, Codexa albo Cursora, to widział taki harness w praktyce.
+
+Jeżeli model działający wewnątrz takiej uprzęży może wybierać kolejne kroki, korzystać z narzędzi i reagować na ich wyniki, cały ten system możemy nazwać agentem. Agent nie jest więc nowym rodzajem magicznego modelu. Jest po prostu aplikacją, w której model został włączony w kontrolowaną pętlę działania.
+
+Dobrze widać to na przykładzie dwóch konkurujących firm: amerykańskiej firmy Harvey i wywodzącej się ze Szwecji Legory. Budują narzędzia, które włączają AI w codzienną pracę prawników.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">schemat objaśniający architekturę opisaną w tekście autora. Kontrola wyników oznacza konkretne sprawdzenia i możliwość interwencji człowieka, nie gwarancję poprawności odpowiedzi.</div></details>
+<div class="note-nav"><a href="#slajd-07">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-09">Następny →</a></div>
+</section><section class="note" id="slajd-09">
+<div class="note-number">SLAJD 09 / 16</div>
+<h2>AI w badaniu firmy</h2>
+<div class="script">Weźmy proces due diligence. To jest badanie firmy przed zakupem: chcemy wiedzieć, jakie problemy i zobowiązania prawne kupujemy razem z przedsiębiorstwem.
+
+Taki proces ma już swoje standardy. Prawnicy ustalają zakres badania, gromadzą umowy w poufnym repozytorium i analizują je według planu, sprawdzając między innymi klauzule istotne dla transakcji. Jeżeli brakuje umowy albo załącznika, trzeba o niego poprosić i zaktualizować analizę. Na końcu powstaje raport wskazujący problemy, które mogą wymagać zmiany ceny albo warunków transakcji. Przez lata kancelarie i firmy doradcze zatrudniały armie młodych prawników, którzy mozolnie przeglądali wszystkie te papierki.
+
+Zwykłe okienko czatu nie obsłuży całego procesu. Prawnik musiałby wybierać dokumenty, kopiować odpowiedzi i pilnować, czy model czegoś nie pominął.
+
+W systemie do takiej pracy harness przekazuje dokumenty modelowi, pilnuje uprawnień, zapisuje wyniki i kieruje przypadki wymagające sprawdzenia do człowieka. Może też sprawdzać, czy odpowiedź wskazuje fragment dokumentu, na którym się opiera.
+
+Załóżmy, że model znajduje w umowie klauzulę dotyczącą zmiany właściciela. To nie jest abstrakcyjny przykład. Taka klauzula znalazła się w umowie OpenAI z Cursorem. Po przejęciu Cursora przez SpaceX OpenAI skorzystało z możliwości wypowiedzenia umowy i zapowiedziało odcięcie dostępu do swoich modeli.
+
+W naszym przykładzie system agentowy może zaplanować sprawdzenie, czy w repozytorium znajduje się aneks zmieniający tę klauzulę albo zgoda kontrahenta na zmianę właściciela. Jeżeli takiego dokumentu nie odnajdzie, może oznaczyć brak i przygotować pytanie do sprzedającego.
+
+Agent sam nie dokonuje ostatecznej oceny prawnej. Może odnaleźć zapis, zebrać powiązane dokumenty, przygotować tabelę i wskazać potencjalny problem. To prawnik musi zdecydować, czy ryzyko jest rzeczywiście istotne oraz czy powinno wpłynąć na cenę albo warunki transakcji. Przygotowanie materiału do takiej decyzji mogło wcześniej wymagać wielu godzin pracy. Dzisiaj znaczną część tej pracy może wykonać automat.
+
+Wartość takiego produktu nie bierze się więc wyłącznie z jakości modelu językowego. Powstaje również w integracjach, firmowej wiedzy, kontroli uprawnień, sposobie weryfikacji wyników i dopasowaniu aplikacji do rzeczywistego procesu pracy.
+
+Firma może zbudować wartościowy produkt, korzystając z wynajętej mocy obliczeniowej i cudzego modelu. Nie musi samodzielnie trenować największego modelu ani budować własnego centrum danych. Harvey już wcześniej dostosowywał modele OpenAI, a niedawno pokazał własny wyspecjalizowany model oparty na modelu z otwartymi wagami. Własny model nie był jednak warunkiem uruchomienia produktu.
+
+Model jest tutaj jednym z podzespołów. Ważnym, ale takim, który można wymienić.
+
+W „RzeczpospolitAI” Wojciech Krok z Żabki opisuje system, w którym AI podpowiada franczyzobiorcy zamówienie produktów, a człowiek je akceptuje lub poprawia. Według Kroka firma mogła wymieniać zewnętrzny model, zachowując własny system obsługujący ten proces. To konkretny przykład przenośności.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">przebieg badania jako przykład dydaktyczny autora, komunikat OpenAI o umowie z Cursorem: https://openai.com/index/our-decision-on-cursor-following-its-acquisition-by-spacex/, Harvey Tenet: https://www.harvey.ai/blog/post-training-update-harvey-tenet. Schemat nie jest zrzutem produktu ani twierdzeniem, że obie wymienione firmy implementują dokładnie taki sam proces.</div></details>
+<div class="note-nav"><a href="#slajd-08">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-10">Następny →</a></div>
+</section><section class="note" id="slajd-10">
+<div class="note-number">SLAJD 10 / 16</div>
+<h2>Polskie produkty</h2>
+<div class="script">Skoro prześledziliśmy cały stos, zobaczmy, które jego elementy mamy albo możemy mieć pod polską lub europejską kontrolą.
+
+Zacznijmy od końca — od aplikacji, harnessów i agentów. Tutaj mamy już konkretne przykłady.
+
+We Wrocławiu działa Text, dawniej LiveChat Software. Firma dobudowała do swojego systemu obsługi klienta agentów korzystających z wiedzy przedsiębiorstwa i katalogu produktów. Agent odpowiada na pytania, uruchamia procedury i przekazuje trudniejsze sprawy człowiekowi. Text korzysta z cudzej infrastruktury i modeli, ale kontroluje własny produkt i relację z klientem.
+
+Mamy też Nomagic, które łączy modele, kamery i roboty wykonujące pracę w magazynach Zalando. To przykład robotyki, a nie usługi opartej wyłącznie na LLM-ie.
+
+Przywołany przed chwilą przykład Żabki też tutaj pasuje. Te firmy pokazują, że potrafimy budować produkty wykorzystujące AI i dopasowywać je do konkretnych procesów pracy.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">Text, funkcje agenta: https://www.text.com/features/ai-agent/, Nomagic, współpraca z Zalando: https://nomagic.ai/news/nomagic-selected-by-zalando-to-expand-robotic-warehouse-capabilities/, relacja Wojciecha Kroka w „RzeczpospolitAI” przywołana w tekście autora. Komunikaty firm opisują funkcje i współpracę, nie niezależnie zmierzony efekt gospodarczy.</div></details>
+<div class="note-nav"><a href="#slajd-09">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-11">Następny →</a></div>
+</section><section class="note" id="slajd-11">
+<div class="note-number">SLAJD 11 / 16</div>
+<h2>Modele pod własną kontrolą</h2>
+<div class="script">Na poziomie modeli odpowiedź jest mniej jednoznaczna. Mamy PLLuM i Bielika, a w Europie działa francuski Mistral. Mistral nadal rozwija własne modele, ale jego flagowy Medium 3.5 już w momencie premiery nie dorównywał najlepszym modelom amerykańskim i chińskim. We wrześniu udostępnił też na swojej infrastrukturze chiński GLM-5.3.
+
+PLLuM i Bielik pokazują, że mamy kompetencje do adaptowania modeli do lokalnych potrzeb. Samo opublikowanie modelu nie oznacza jednak, że firmy i urzędy zaczną z niego korzystać. Model musi być wystarczająco dobry, a jego wdrożenie i utrzymanie muszą się opłacać. Ważniejsze od tego, czy został wytrenowany od zera przez polski podmiot, może być to, czy sprawdza się w naszych zastosowaniach i czy możemy go utrzymywać bez każdorazowej zgody zagranicznego dostawcy.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">rozwój PLLuM: https://www.gov.pl/web/cyfryzacja/wiecej-szybciej-po-polsku-rodzina-modeli-pllum-sie-powieksza, część o Bieliku w kontekście projektu, GLM-5.3 w ofercie Mistrala: https://docs.mistral.ai/models/zai-glm-5-3. Kontrola dotyczy konkretnego wdrożenia i jego warunków, nie samej narodowości nazwy.</div></details>
+<div class="note-nav"><a href="#slajd-10">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-12">Następny →</a></div>
+</section><section class="note" id="slajd-12">
+<div class="note-number">SLAJD 12 / 16</div>
+<h2>Infrastruktura i usługi</h2>
+<div class="script">Mamy wagi, ale potrzebujemy jeszcze infrastruktury, na której uruchomimy modele. Tutaj wchodzą już duże pieniądze: zakup sprzętu, budowa centrów danych, zasilanie i utrzymanie.
+
+W Polsce rozwijane są fabryki AI: PIAST-AI w Poznaniu i Gaia w Krakowie. To infrastruktura obliczeniowa połączona z usługami potrzebnymi do trenowania, dostosowywania i używania modeli. Uczelnia, startup albo urząd nie muszą wtedy budować wszystkiego samodzielnie.
+
+W „RzeczpospolitAI” Wojciech Stramski porównuje rolę takiej infrastruktury do lotnisk, autostrad i kolei: państwo tworzy warunki, z których korzysta gospodarka.
+
+Własna infrastruktura AI może ułatwiać wykorzystanie Bielika i PLLuMa przez polskie firmy. Wiele modeli, również tych z otwartymi wagami, jest dostępnych jako usługa rozliczana za tokeny. Oferty Bielika i PLLuMa w takiej formule trudno mi jednak znaleźć - znam tylko CloudFerro z usługą Sherlock. Oferta najmocniejszych modeli zagranicznych też jest tam ograniczona. Potrzebujemy więc nie tylko infrastruktury, ale też konkurencyjnej oferty usług, która nadąża za rozwojem najlepszych modeli. Firma powinna móc z nich korzystać bez samodzielnego utrzymywania całego zaplecza.
+
+Jeżeli państwo chce mieć u siebie firmy i instytucje zdolne do rozwijania i utrzymywania tych technologii, samo stworzenie modelu językowego i kilku klastrów GPU dla administracji i uczelni nie wystarczy. Potrzebne są dane, finansowanie i odbiorcy, którzy będą z tych rozwiązań korzystać. Potrzebne są też trwałe zespoły badawcze i inżynierskie.
+
+Nie wystarczy grant do dnia publikacji modelu. Ktoś musi go później rozwijać, sprawdzać i utrzymywać. Ktoś musi też zbudować na jego podstawie usługę, której inni będą potrzebować. Całość musi mieć ekonomiczne uzasadnienie.
+
+Państwo nie zrobi wszystkiego własnymi rękami. Powinno tworzyć warunki, w których firmy, uczelnie i inne organizacje mogą rozwijać AI i utrzymywać swoje rozwiązania przez lata.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">EuroHPC, PIAST-AI: https://www.eurohpc-ju.europa.eu/ai-factories/poland_en, EuroHPC, Gaia: https://www.eurohpc-ju.europa.eu/poland-gaia-ai-factory_en. Fabryki AI obejmują również usługi i kompetencje. Układ nie powinien sugerować, że są wyłącznie magazynami sprzętu ani że cała docelowa oferta już działa.</div></details>
+<div class="note-nav"><a href="#slajd-11">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-13">Następny →</a></div>
+</section><section class="note" id="slajd-13">
+<div class="note-number">SLAJD 13 / 16</div>
+<h2>Wdrożenie i efekt</h2>
+<div class="script">W 2025 roku, według Eurostatu, sztuczną inteligencję wykorzystywało około 20 procent firm z branż objętych badaniem, zatrudniających co najmniej dziesięć osób w Unii Europejskiej. W Polsce było to około 8 procent.
+
+To oznacza, że naszym problemem nie jest tylko brak największego modelu albo fabryki najnowocześniejszych chipów. Problemem jest również to, czy nasze firmy i instytucje potrafią wdrażać technologię, która już istnieje.
+
+Możemy kupić serwery i nie zbudować usługi. Możemy opublikować polski model i nie znaleźć dla niego użytkowników. Możemy kupić dostęp do najlepszego zagranicznego API i nie umieć sprawdzić, czy jego odpowiedzi są poprawne na polskich dokumentach.
+
+Tę różnicę między narzędziem a efektem widać w dyskusji o AI HUB dla administracji, przygotowywanym przez Ministerstwo Cyfryzacji. Podczas opiniowania zwrócono uwagę, że wskaźniki koncentrują się na liczbie modeli i połączeń między systemami, zamiast na czasie, koszcie i jakości pracy urzędu.
+
+Ministerstwo odpowiedziało, że projekt ma budować wspólne możliwości technologiczne i współpracę systemów, a częstotliwość pomiarów skorygowano. Nie jest to dowód, że projekt się nie uda, ale te wskaźniki nie pokazują jeszcze, czy praca urzędu rzeczywiście się poprawi. Czy dzięki tym narzędziom konkretną sprawę załatwimy szybciej, taniej albo z mniejszą liczbą błędów?
+
+AI mnoży zdolność organizacji. Jeżeli organizacja ma dobre dane, jasny proces i ludzi potrafiących ocenić wynik, może działać szybciej i szerzej. Jeżeli ma bałagan, model może ten bałagan równie dobrze powiększyć.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">Eurostat, wykorzystanie AI w firmach w 2025 r.: https://ec.europa.eu/eurostat/web/products-eurostat-news/w/ddn-20251211-2, dokumentacja opiniowania AI HUB: https://www.gov.pl/web/kdsc/ai-hub-dla-administracji-publicznej. Pytanie pod wykresem jest kryterium oceny autora, nie wnioskiem statystycznym Eurostatu.</div></details>
+<div class="note-nav"><a href="#slajd-12">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-14">Następny →</a></div>
+</section><section class="note" id="slajd-14">
+<div class="note-number">SLAJD 14 / 16</div>
+<h2>System dla analityka</h2>
+<div class="script">Weźmy teraz konkretny przykład systemu, który moglibyśmy zbudować i utrzymywać w Polsce. Powiedzmy, że chcemy monitorować obce wpływy w mediach społecznościowych. Możemy wziąć model z dostępnymi wagami, dostosować go do języka polskiego i znanych sposobów prowadzenia operacji wpływu, połączyć z wyszukiwaniem źródeł i uruchomić na kontrolowanej infrastrukturze.
+
+Taki system mógłby grupować podobne narracje, wskazywać nagłe zmiany, tłumaczyć materiały i odnajdywać wcześniejsze wersje przekazu. Ostateczna ocena należałaby do człowieka. Oprogramowanie pilnowałoby uprawnień, zakresu monitorowania i dostępu do danych. Całość działałaby na kontrolowanej infrastrukturze, choć zbudowanej z importowanych komponentów.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">hipotetyczny przykład autora. Nie opisuje potwierdzonego wdrożenia konkretnej instytucji.</div></details>
+<div class="note-nav"><a href="#slajd-13">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-15">Następny →</a></div>
+</section><section class="note" id="slajd-15">
+<div class="note-number">SLAJD 15 / 16</div>
+<h2>Zakres kontroli</h2>
+<div class="script">Nie kontrolujemy całego łańcucha, ale nawet USA i Chiny nie są całkiem samowystarczalne. Trzeba więc ograniczać ryzyko zablokowania któregoś elementu i uzależnienia od jednego dostawcy. Generał Karol Molenda ujmuje to w „RzeczpospolitAI” jako suwerenność operacyjną: rozumieć zależności, testować cudze rozwiązania, kontrolować przepływy danych i mieć własne kompetencje.
+
+Zakres tej kontroli powinien zależeć od zastosowania. Przy poprawianiu tekstu marketingowego możemy zaakceptować dużą zależność od rynku. Jeżeli jedna usługa zniknie, przechodzimy do drugiej.
+
+W systemie ważnym dla ciągłości działania firmy albo urzędu potrzebujemy już przenośności danych, własnych testów jakości i alternatywnego dostawcy. A w systemach krytycznych dla bezpieczeństwa państwa albo działania infrastruktury potrzebujemy dodatkowo kontrolowanego miejsca uruchamiania, audytu i zespołu zdolnego utrzymać całość również wtedy, gdy zagraniczny producent przestanie pomagać.
+
+Praktyczne pytanie brzmi: czy mamy plan, gdy dostawca podniesie cenę, zmieni reguły albo odetnie dostęp? Nie każda odpowiedź musi brzmieć: robimy wszystko sami. Powinna jednak istnieć odpowiedź inna niż: mamy nadzieję, że dostawca nas nie wyłączy.
+
+To jest suwerenność selektywna. Wybieramy te miejsca łańcucha, w których cudza decyzja mogłaby nas sparaliżować, i właśnie tam budujemy własną zdolność albo wiarygodną możliwość zmiany dostawcy.
+
+Dlatego dla Polski realistycznym programem jest inwestowanie w dane, dostosowywanie modeli, sprawdzanie ich jakości, aplikacje i trwałe zespoły. Do tego potrzebujemy kontrolowanej infrastruktury dla funkcji wrażliwych, przenośności w zamówieniach publicznych i współpracy europejskiej tam, gdzie skala przekracza możliwości jednego państwa.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">autorska synteza zaleceń w tekście. Relacja Karola Molendy w „RzeczpospolitAI” pozostaje przypisana rozmówcy. Tabela nie jest normą prawną ani gotowym standardem certyfikacji.</div></details>
+<div class="note-nav"><a href="#slajd-14">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><a href="#slajd-16">Następny →</a></div>
+</section><section class="note" id="slajd-16">
+<div class="note-number">SLAJD 16 / 16</div>
+<h2>Możliwość dalszego działania</h2>
+<div class="script">Cztery lata temu zobaczyliśmy okienko czatu. Dzisiaj coraz wyraźniej widać, że znaczenie ma cały system, który stoi za tym okienkiem - i to, kto potrafi go utrzymać.
+
+Polska nie jest mocarstwem. Nasz program nie powinien zależeć od tego, czy zbudujemy najlepszy na świecie model językowy. Powinniśmy sobie odpowiedzieć, które elementy chcemy budować sami i jakie kompetencje musimy rozwinąć. Żeby w momencie, kiedy ktoś wyłączy nam wtyczkę, mieć ludzi i możliwości, by podłączyć się gdzie indziej.</div>
+<details><summary>Źródła i kontekst</summary><div class="sources">końcowy wniosek autora, bez nowego twierdzenia faktograficznego.</div></details>
+<div class="note-nav"><a href="#slajd-15">← Poprzedni</a><a href="#spis">Spis slajdów ↑</a><span></span></div>
+</section>
+</main></body></html>
